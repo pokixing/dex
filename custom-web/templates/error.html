@@ -1,0 +1,8 @@
+{{ template "header.html" . }}
+
+<div class="error-container">
+  <h2 class="error-type">{{ .ErrType }}</h2>
+  <p class="error-msg">{{ .ErrMsg }}</p>
+</div>
+
+{{ template "footer.html" . }}
