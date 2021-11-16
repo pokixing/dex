@@ -18,6 +18,7 @@ import (
 	"time"
 
 	gosundheit "github.com/AppsFlyer/go-sundheit"
+	"github.com/dexidp/dex/connector/oauth"
 	"github.com/felixge/httpsnoop"
 	"github.com/gorilla/handlers"
 	"github.com/gorilla/mux"
@@ -528,6 +529,7 @@ var ConnectorsConfig = map[string]func() ConnectorConfig{
 	"gitlab":          func() ConnectorConfig { return new(gitlab.Config) },
 	"google":          func() ConnectorConfig { return new(google.Config) },
 	"oidc":            func() ConnectorConfig { return new(oidc.Config) },
+	"oauth":           func() ConnectorConfig { return new(oauth.Config) },
 	"saml":            func() ConnectorConfig { return new(saml.Config) },
 	"authproxy":       func() ConnectorConfig { return new(authproxy.Config) },
 	"linkedin":        func() ConnectorConfig { return new(linkedin.Config) },
