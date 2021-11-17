@@ -117,8 +117,13 @@ a {
 }
 
 .login .login-inner-form .form-group {
-  margin-bottom: 25px;
+  margin-bottom: 15px;
   text-align: left;
+}
+
+.login .login-inner-form .error-text {
+  margin-bottom: 5px;
+  color: #f56c6c;
 }
 
 .login .login-inner-form .input-text {
