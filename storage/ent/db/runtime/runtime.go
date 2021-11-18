@@ -2,7 +2,7 @@
 
 package runtime
 
-// The schema-stitching logic is generated in github.com/dexidp/dex/storage/ent/db/runtime.go
+// The schema-stitching logic is generated in github.com/koderover/dex/storage/ent/db/runtime.go
 
 const (
 	Version = "v0.8.0"                                          // Version of ent codegen.

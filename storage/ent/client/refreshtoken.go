@@ -3,7 +3,7 @@ package client
 import (
 	"context"
 
-	"github.com/dexidp/dex/storage"
+	"github.com/koderover/dex/storage"
 )
 
 // CreateRefresh saves provided refresh token into the database.

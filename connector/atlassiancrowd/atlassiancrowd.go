@@ -13,9 +13,9 @@ import (
 	"strings"
 	"time"
 
-	"github.com/dexidp/dex/connector"
-	"github.com/dexidp/dex/pkg/groups"
-	"github.com/dexidp/dex/pkg/log"
+	"github.com/koderover/dex/connector"
+	"github.com/koderover/dex/pkg/groups"
+	"github.com/koderover/dex/pkg/log"
 )
 
 // Config holds configuration options for Atlassian Crowd connector.

@@ -9,7 +9,6 @@ require (
 	github.com/Masterminds/sprig/v3 v3.2.2
 	github.com/beevik/etree v1.1.0
 	github.com/coreos/go-oidc/v3 v3.0.0
-	github.com/dexidp/dex/api/v2 v2.0.0
 	github.com/felixge/httpsnoop v1.0.2
 	github.com/ghodss/yaml v1.0.0
 	github.com/go-ldap/ldap/v3 v3.3.0
@@ -17,6 +16,7 @@ require (
 	github.com/gorilla/handlers v1.5.1
 	github.com/gorilla/mux v1.8.0
 	github.com/grpc-ecosystem/go-grpc-prometheus v1.2.0
+	github.com/koderover/dex/api/v2 v2.0.0-00010101000000-000000000000
 	github.com/kylelemons/godebug v1.1.0
 	github.com/lib/pq v1.10.2
 	github.com/mattermost/xml-roundtrip-validator v0.1.0
@@ -39,4 +39,4 @@ require (
 	gopkg.in/square/go-jose.v2 v2.6.0
 )
 
-replace github.com/dexidp/dex/api/v2 => ./api/v2
+replace github.com/koderover/dex/api/v2 => ./api/v2

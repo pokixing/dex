@@ -15,8 +15,8 @@ import (
 	"github.com/go-sql-driver/mysql"
 	"github.com/lib/pq"
 
-	"github.com/dexidp/dex/pkg/log"
-	"github.com/dexidp/dex/storage"
+	"github.com/koderover/dex/pkg/log"
+	"github.com/koderover/dex/storage"
 )
 
 const (
@@ -274,7 +274,7 @@ func (s *MySQL) open(logger log.Logger) (*conn, error) {
 	}
 
 	if s.MaxIdleConns == 0 {
-		/*Override default behaviour to fix https://github.com/dexidp/dex/issues/1608*/
+		/*Override default behaviour to fix https://github.com/koderover/dex/issues/1608*/
 		db.SetMaxIdleConns(0)
 	} else {
 		db.SetMaxIdleConns(s.MaxIdleConns)

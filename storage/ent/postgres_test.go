@@ -8,8 +8,8 @@ import (
 	"github.com/sirupsen/logrus"
 	"github.com/stretchr/testify/require"
 
-	"github.com/dexidp/dex/storage"
-	"github.com/dexidp/dex/storage/conformance"
+	"github.com/koderover/dex/storage"
+	"github.com/koderover/dex/storage/conformance"
 )
 
 const (

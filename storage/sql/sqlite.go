@@ -1,3 +1,4 @@
+//go:build cgo
 // +build cgo
 
 package sql
@@ -8,8 +9,8 @@ import (
 
 	sqlite3 "github.com/mattn/go-sqlite3"
 
-	"github.com/dexidp/dex/pkg/log"
-	"github.com/dexidp/dex/storage"
+	"github.com/koderover/dex/pkg/log"
+	"github.com/koderover/dex/storage"
 )
 
 // SQLite3 options for creating an SQL db.

@@ -6,13 +6,13 @@ import (
 	"hash"
 	"time"
 
-	"github.com/dexidp/dex/storage"
-	"github.com/dexidp/dex/storage/ent/db"
-	"github.com/dexidp/dex/storage/ent/db/authcode"
-	"github.com/dexidp/dex/storage/ent/db/authrequest"
-	"github.com/dexidp/dex/storage/ent/db/devicerequest"
-	"github.com/dexidp/dex/storage/ent/db/devicetoken"
-	"github.com/dexidp/dex/storage/ent/db/migrate"
+	"github.com/koderover/dex/storage"
+	"github.com/koderover/dex/storage/ent/db"
+	"github.com/koderover/dex/storage/ent/db/authcode"
+	"github.com/koderover/dex/storage/ent/db/authrequest"
+	"github.com/koderover/dex/storage/ent/db/devicerequest"
+	"github.com/koderover/dex/storage/ent/db/devicetoken"
+	"github.com/koderover/dex/storage/ent/db/migrate"
 )
 
 var _ storage.Storage = (*Database)(nil)

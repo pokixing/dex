@@ -11,7 +11,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/dexidp/dex/storage"
+	"github.com/koderover/dex/storage"
 )
 
 type deviceCodeResponse struct {

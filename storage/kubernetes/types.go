@@ -6,8 +6,8 @@ import (
 
 	jose "gopkg.in/square/go-jose.v2"
 
-	"github.com/dexidp/dex/storage"
-	"github.com/dexidp/dex/storage/kubernetes/k8sapi"
+	"github.com/koderover/dex/storage"
+	"github.com/koderover/dex/storage/kubernetes/k8sapi"
 )
 
 const (
