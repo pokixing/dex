@@ -39,4 +39,4 @@ require (
 	gopkg.in/square/go-jose.v2 v2.6.0
 )
 
-replace github.com/koderover/dex/api/v2 => ./api/v2
+replace github.com/koderover/dex/api/v2 v2.0.0 => ./api/v2
