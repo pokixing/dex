@@ -9,8 +9,8 @@ import (
 
 	clientv3 "go.etcd.io/etcd/client/v3"
 
-	"github.com/dexidp/dex/pkg/log"
-	"github.com/dexidp/dex/storage"
+	"github.com/koderover/dex/pkg/log"
+	"github.com/koderover/dex/storage"
 )
 
 const (

@@ -10,10 +10,10 @@ import (
 	// Register sqlite driver.
 	_ "github.com/mattn/go-sqlite3"
 
-	"github.com/dexidp/dex/pkg/log"
-	"github.com/dexidp/dex/storage"
-	"github.com/dexidp/dex/storage/ent/client"
-	"github.com/dexidp/dex/storage/ent/db"
+	"github.com/koderover/dex/pkg/log"
+	"github.com/koderover/dex/storage"
+	"github.com/koderover/dex/storage/ent/client"
+	"github.com/koderover/dex/storage/ent/db"
 )
 
 // SQLite3 options for creating an SQL db.

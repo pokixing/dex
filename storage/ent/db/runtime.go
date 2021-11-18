@@ -5,17 +5,17 @@ package db
 import (
 	"time"
 
-	"github.com/dexidp/dex/storage/ent/db/authcode"
-	"github.com/dexidp/dex/storage/ent/db/authrequest"
-	"github.com/dexidp/dex/storage/ent/db/connector"
-	"github.com/dexidp/dex/storage/ent/db/devicerequest"
-	"github.com/dexidp/dex/storage/ent/db/devicetoken"
-	"github.com/dexidp/dex/storage/ent/db/keys"
-	"github.com/dexidp/dex/storage/ent/db/oauth2client"
-	"github.com/dexidp/dex/storage/ent/db/offlinesession"
-	"github.com/dexidp/dex/storage/ent/db/password"
-	"github.com/dexidp/dex/storage/ent/db/refreshtoken"
-	"github.com/dexidp/dex/storage/ent/schema"
+	"github.com/koderover/dex/storage/ent/db/authcode"
+	"github.com/koderover/dex/storage/ent/db/authrequest"
+	"github.com/koderover/dex/storage/ent/db/connector"
+	"github.com/koderover/dex/storage/ent/db/devicerequest"
+	"github.com/koderover/dex/storage/ent/db/devicetoken"
+	"github.com/koderover/dex/storage/ent/db/keys"
+	"github.com/koderover/dex/storage/ent/db/oauth2client"
+	"github.com/koderover/dex/storage/ent/db/offlinesession"
+	"github.com/koderover/dex/storage/ent/db/password"
+	"github.com/koderover/dex/storage/ent/db/refreshtoken"
+	"github.com/koderover/dex/storage/ent/schema"
 )
 
 // The init function reads all schema descriptors with runtime code

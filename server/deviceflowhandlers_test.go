@@ -13,7 +13,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/dexidp/dex/storage"
+	"github.com/koderover/dex/storage"
 )
 
 func TestDeviceVerificationURI(t *testing.T) {

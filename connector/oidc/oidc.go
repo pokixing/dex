@@ -14,8 +14,8 @@ import (
 	"github.com/coreos/go-oidc/v3/oidc"
 	"golang.org/x/oauth2"
 
-	"github.com/dexidp/dex/connector"
-	"github.com/dexidp/dex/pkg/log"
+	"github.com/koderover/dex/connector"
+	"github.com/koderover/dex/pkg/log"
 )
 
 // Config holds configuration options for OpenID Connect logins.
@@ -41,7 +41,7 @@ type Config struct {
 	// Override the value of email_verified to true in the returned claims
 	InsecureSkipEmailVerified bool `json:"insecureSkipEmailVerified"`
 
-	// InsecureEnableGroups enables groups claims. This is disabled by default until https://github.com/dexidp/dex/issues/1065 is resolved
+	// InsecureEnableGroups enables groups claims. This is disabled by default until https://github.com/koderover/dex/issues/1065 is resolved
 	InsecureEnableGroups bool `json:"insecureEnableGroups"`
 
 	// GetUserInfo uses the userinfo endpoint to get additional claims for
@@ -71,7 +71,7 @@ type Config struct {
 // Domains that don't support basic auth. golang.org/x/oauth2 has an internal
 // list, but it only matches specific URLs, not top level domains.
 var brokenAuthHeaderDomains = []string{
-	// See: https://github.com/dexidp/dex/issues/859
+	// See: https://github.com/koderover/dex/issues/859
 	"okta.com",
 	"oktapreview.com",
 }

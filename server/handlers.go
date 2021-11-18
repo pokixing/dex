@@ -18,9 +18,9 @@ import (
 	"github.com/gorilla/mux"
 	jose "gopkg.in/square/go-jose.v2"
 
-	"github.com/dexidp/dex/connector"
-	"github.com/dexidp/dex/server/internal"
-	"github.com/dexidp/dex/storage"
+	"github.com/koderover/dex/connector"
+	"github.com/koderover/dex/server/internal"
+	"github.com/koderover/dex/storage"
 )
 
 const (
