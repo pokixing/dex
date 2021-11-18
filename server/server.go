@@ -21,7 +21,6 @@ import (
 	"github.com/felixge/httpsnoop"
 	"github.com/gorilla/handlers"
 	"github.com/gorilla/mux"
-	"github.com/koderover/dex/connector/oauth"
 	"github.com/prometheus/client_golang/prometheus"
 	"golang.org/x/crypto/bcrypt"
 
@@ -529,7 +528,6 @@ var ConnectorsConfig = map[string]func() ConnectorConfig{
 	"gitlab":          func() ConnectorConfig { return new(gitlab.Config) },
 	"google":          func() ConnectorConfig { return new(google.Config) },
 	"oidc":            func() ConnectorConfig { return new(oidc.Config) },
-	"oauth":           func() ConnectorConfig { return new(oauth.Config) },
 	"saml":            func() ConnectorConfig { return new(saml.Config) },
 	"authproxy":       func() ConnectorConfig { return new(authproxy.Config) },
 	"linkedin":        func() ConnectorConfig { return new(linkedin.Config) },

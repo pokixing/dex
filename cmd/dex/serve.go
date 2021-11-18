@@ -10,6 +10,7 @@ import (
 	"net"
 	"net/http"
 	"os"
+	"plugin"
 	"strings"
 	"syscall"
 	"time"
@@ -74,13 +75,55 @@ func commandServe() *cobra.Command {
 	return cmd
 }
 
+type CustomConnectorConfig interface {
+	server.ConnectorConfig
+	GetName() string
+}
+
+func LoadPlugins(plugins []CustomConnectorConfig) {
+	for _, p := range plugins {
+		server.ConnectorsConfig[p.GetName()] = func() server.ConnectorConfig {
+			return p
+		}
+		return
+	}
+}
+
+func loadCustomConnector() error {
+	var mod string
+	mod = "./connector/custom"
+
+	// load module
+	// 1. open the so file to load the symbols
+	plug, err := plugin.Open(mod)
+	if err != nil {
+		return err
+	}
+
+	// 2. look up a symbol (an exported function or variable)
+	// in this case, variable Greeter
+	connConfigRaw, err := plug.Lookup("ConnConfig")
+	if err != nil {
+		return err
+	}
+
+	// 3. Assert that loaded symbol is of a desired type
+	// in this case interface type Greeter (defined above)
+	connConfig, ok := connConfigRaw.(CustomConnectorConfig)
+	if !ok {
+		return fmt.Errorf("unexpected type from connector plugin")
+	}
+	LoadPlugins([]CustomConnectorConfig{connConfig})
+	return nil
+}
+
 func runServe(options serveOptions) error {
 	configFile := options.config
 	configData, err := ioutil.ReadFile(configFile)
 	if err != nil {
 		return fmt.Errorf("failed to read config file %s: %v", configFile, err)
 	}
-
+	err = loadCustomConnector()
 	var c Config
 	if err := yaml.Unmarshal(configData, &c); err != nil {
 		return fmt.Errorf("error parse config file %s: %v", configFile, err)

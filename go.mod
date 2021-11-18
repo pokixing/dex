@@ -16,7 +16,7 @@ require (
 	github.com/gorilla/handlers v1.5.1
 	github.com/gorilla/mux v1.8.0
 	github.com/grpc-ecosystem/go-grpc-prometheus v1.2.0
-	github.com/koderover/dex/api/v2 v2.0.0-00010101000000-000000000000
+	github.com/koderover/dex/api/v2 v2.0.0
 	github.com/kylelemons/godebug v1.1.0
 	github.com/lib/pq v1.10.2
 	github.com/mattermost/xml-roundtrip-validator v0.1.0
