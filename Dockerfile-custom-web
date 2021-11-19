@@ -1,5 +1,0 @@
-FROM ccr.ccs.tencentyun.com/koderover-rc/dex:v1
-
-ENV DEX_FRONTEND_DIR=/srv/dex/web
-
-COPY --chown=root:root custom-web /srv/dex/web
