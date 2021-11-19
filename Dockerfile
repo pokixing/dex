@@ -62,5 +62,9 @@ USER 1001:1001
 
 COPY docker-entrypoint.sh /entrypoint.sh
 
+ENV DEX_FRONTEND_DIR=/srv/dex/custom-web
+
+COPY --chown=root:root custom-web /srv/dex/custom-web
+
 ENTRYPOINT ["/entrypoint.sh"]
 CMD ["dex", "serve", "/etc/dex/config.docker.yaml"]
