@@ -29,9 +29,11 @@ a {
 }
 
 .bottom {
-  display: flex;
-  align-items: center;
-  float: right;
+  width: 100%;
+  display: block;
+  align-items: right;
+  text-align: right;
+  margin-top: 5px;
   padding: 0 10px;
 }
 
@@ -67,7 +69,7 @@ a {
   min-height: 100vh;
   padding: 30px 30px;
   text-align: left;
-  background: rgba(0, 0, 0, 0.04) url("./img/login.jpg") top left repeat;
+  background: rgba(0, 0, 0, 0.04) url("../img/login.jpg") top left repeat;
   background-size: cover;
   border-radius: 100% 0 0 100%;
   opacity: 1;
@@ -141,11 +143,10 @@ a {
 }
 
 .login .login-inner-form .btn-md {
-  padding: 10px 30px 10px 30px;
+  padding: 8px 30px 8px 30px;
   font-weight: 600;
   font-size: 14px;
   letter-spacing: 1px;
-  border-radius: 50px;
   cursor: pointer;
 }
 
@@ -325,25 +326,39 @@ input[type="radio"] {
   margin-top: 15px;
 }
 
-.details .auth-types {
-  margin: 10px auto 0;
-  padding: 20px;
+.details .divider{
+  height: 1px;
+  background: #ccc;
+  width: 100%;
+  margin: 12px 0;
+}
+
+.details .desc{
+  font-size: 14px;
+  color: #464a4e;
+  font-weight: 400;
+  display: block;
+  margin-top: 35px;
 }
 
 .details .auth-types a {
   display: inline-block;
-  width: 100%;
-  height: 45px;
-  margin-bottom: 15px;
-  color: white;
+  margin: 0px 5px;
+  height: 35px;
+  color: #007bff;
+  border: 1px solid #007bff;
+  padding: 0 10px;
+  border-radius: 4px;
   font-weight: 400;
-  font-size: 18px;
+  font-size: 13px;
   transition: all 0.3s;
   user-select: none;
 }
 
 .details .auth-types a:hover {
   text-decoration: none;
+  border-color: #007bff;
+  color: #007bff;
 }
 
 .details .auth-types p {
@@ -355,21 +370,12 @@ input[type="radio"] {
 
 .details .auth-types .login-button-show {
   display: block;
-  line-height: 45px;
-  letter-spacing: 1px;
-  background: #376bff;
-  border-radius: 5px;
+  line-height: 35px;
 }
 
-.details .auth-types .login-button-show:hover {
-  background: #2c5ce4;
-}
 
 .details .auth-types .login-button-show .iconfont {
   position: relative;
-  top: 2px;
-  margin-right: 3px;
-  font-size: 26px;
 }
 
 .grant-access-container .heading {
