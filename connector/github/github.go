@@ -188,9 +188,9 @@ func (c *githubConnector) oauth2Config(scopes connector.Scopes) *oauth2.Config {
 }
 
 func (c *githubConnector) LoginURL(scopes connector.Scopes, callbackURL, state string) (string, error) {
-	if c.redirectURI != callbackURL {
-		return "", fmt.Errorf("expected callback URL %q did not match the URL in the config %q", callbackURL, c.redirectURI)
-	}
+	//if c.redirectURI != callbackURL {
+	//	return "", fmt.Errorf("expected callback URL %q did not match the URL in the config %q", callbackURL, c.redirectURI)
+	//}
 
 	return c.oauth2Config(scopes).AuthCodeURL(state), nil
 }
