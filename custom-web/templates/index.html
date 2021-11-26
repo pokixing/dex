@@ -42,7 +42,7 @@
         href="https://fonts.googleapis.com/css?family=Noto+Sans+SC:200,300,400,500,600,700" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans+SC:200,300,400,500,600,700"
         media="all" onload="this.media='all'" /> -->
-        <link rel="stylesheet" href="https://at.alicdn.com/t/font_1282370_mbsho89kty9.css"
+        <link rel="stylesheet" href="https://at.alicdn.com/t/font_1282370_pa5gn2t532.css"
         media="all" onload="this.media='all'" />
         <link href="../static/css/bootstrap.css" rel="stylesheet" />
         <link href="../static/css/main.css" rel="stylesheet" />
@@ -83,17 +83,24 @@
                                                 <label for="password"
                                                     >密码</label
                                                 >
-                                                <input
-                                                    required
-                                                    v-model="loginForm.password"
-                                                    id="password"
-                                                    name="password"
-                                                    type="password"
-                                                    class="form-control"
-                                                    placeholder="请输入密码"
-                                                    value=""
-                                                    autofocus
-                                                />
+                                                <div class="input--suffix">
+                                                    <input
+                                                        required
+                                                        v-model="loginForm.password"
+                                                        id="password"
+                                                        name="password"
+                                                        :type="showPassword?'text':'password'"
+                                                        class="form-control"
+                                                        placeholder="请输入密码"
+                                                        value=""
+                                                        autofocus
+                                                    />
+                                                    <span class="input__suffix">
+                                                        <span class="input__suffix-inner">
+                                                        <i @click="showPassword = !showPassword" class="iconfont iconview"></i>
+                                                        </span>
+                                                    </span>
+                                                </div>
                                             </div>
                                             <p v-if="showLoginError" class="text-left error-text">用户名或密码不正确</p>
                                             <button

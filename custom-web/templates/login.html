@@ -29,17 +29,24 @@
             <label for="password"
                 >密码</label
             >
-            <input
-                required
-                v-model="loginForm.password"
-                id="password"
-                name="password"
-                type="password"
-                class="form-control"
-                placeholder="请输入密码"
-                value=""
-                autofocus
-            />
+            <div class="input--suffix">
+                <input
+                    required
+                    v-model="loginForm.password"
+                    id="password"
+                    name="password"
+                    :type="showPassword?'text':'password'"
+                    class="form-control"
+                    placeholder="请输入密码"
+                    value=""
+                    autofocus
+                />
+                <span class="input__suffix">
+                    <span class="input__suffix-inner">
+                    <i @click="showPassword = !showPassword" class="iconfont iconview"></i>
+                    </span>
+                </span>
+            </div>
         </div>
         <p v-if="showLoginError" class="text-left error-text">用户名或密码不正确</p>
         <button

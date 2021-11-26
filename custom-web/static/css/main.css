@@ -123,6 +123,39 @@ a {
   text-align: left;
 }
 
+.login .login-inner-form .form-group .input--suffix {
+  position: relative;
+  font-size: 14px;
+  display: inline-block;
+  width: 100%;
+}
+
+.login .login-inner-form .form-group .input__suffix{
+  position: absolute;
+  top: 0;
+  right: 5px;
+  height: 100%;
+  color: #c0c4cc;
+  text-align: center;
+}
+
+.login .login-inner-form .form-group .input__suffix .input__suffix-inner{
+  pointer-events: all;
+  padding-right: 10px;
+}
+
+.login .login-inner-form .form-group .input__suffix .input__suffix-inner .iconfont{
+  height: 100%;
+  width: 25px;
+  text-align: center;
+  line-height: 38px;
+  cursor: pointer;
+}
+
+.login .login-inner-form .form-group .input__suffix .input__suffix-inner .iconfont:hover{
+  color: #909399;
+}
+
 .login .login-inner-form .error-text {
   margin-bottom: 5px;
   color: #f56c6c;

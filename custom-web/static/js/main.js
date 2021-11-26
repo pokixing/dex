@@ -11,7 +11,8 @@ var dex = new Vue({
             password: "",
         },
         showRegistration:false,
-        showLoginError:false
+        showLoginError:false,
+        showPassword:false
     },
     methods: {
         async login() {
