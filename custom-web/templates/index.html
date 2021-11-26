@@ -42,7 +42,7 @@
         href="https://fonts.googleapis.com/css?family=Noto+Sans+SC:200,300,400,500,600,700" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans+SC:200,300,400,500,600,700"
         media="all" onload="this.media='all'" /> -->
-        <link rel="stylesheet" href="https://at.alicdn.com/t/font_1282370_pa5gn2t532.css"
+        <link rel="stylesheet" href="https://at.alicdn.com/t/font_1282370_f2amwt7wbik.css"
         media="all" onload="this.media='all'" />
         <link href="../static/css/bootstrap.css" rel="stylesheet" />
         <link href="../static/css/main.css" rel="stylesheet" />
@@ -115,31 +115,44 @@
                                             </button>
                                         </form>
                                     </section>
-                                    <div class="bottom">
-                                        <a @click="findPassword">找回密码</a>
-                                        <a v-if="showRegistration" @click="signUp">注册</a>
-                                    </div>
-                                    <span class="desc">第三方登录</span>
-                                    <div class="divider"></div>
                                     <section class="auth-types">
+                                        <span class="login-button-show methods-desc">
+                                            <span>第三方登录：</span>
+                                        </span>
                                         <a href="test">
                                             <span class="login-button-show">
                                                 <i class="iconfont icongithub"></i>
-                                                <span>GitHub</span>
                                             </span>
                                         </a>
                                         <a href="test">
                                             <span class="login-button-show">
                                                 <i class="iconfont iconldap"></i>
-                                                <span>LDAP</span>
                                             </span>
                                         </a>
                                         <a href="test">
                                             <span class="login-button-show">
                                                 <i class="iconfont iconoauth"></i>
-                                                <span>OAuth</span>
                                             </span>
                                         </a>
+                                        <a href="test">
+                                            <span class="login-button-show">
+                                                <i class="iconfont iconotherauth"></i>
+                                            </span>
+                                        </a>
+                                        <span class="divide">|</span>
+                                        <a href="/signin?findPassword=true">
+                                            <span class="login-button-show function-btn">
+                                                <span>找回密码</span>
+                                            </span>
+                                        </a>
+                                        <template v-if="showRegistration">
+                                            <span class="divide">|</span>
+                                            <a href="/signin?signUp=true">
+                                                <span class="login-button-show function-btn">
+                                                    <span>注册</span>
+                                                </span>
+                                            </a>
+                                        </template>
                                       </section>
                                     <!-- 尾结束 -->
                                 </div>

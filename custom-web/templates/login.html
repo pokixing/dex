@@ -61,24 +61,54 @@
         </button>
     </form>
 </section>
-<div class="bottom">
-    <a @click="findPassword">找回密码</a>
-    <a v-if="showRegistration" @click="signUp">注册</a>
-</div>
-<span class="desc">第三方登录</span>
-<div class="divider"></div>
 <section class="auth-types">
-  {{ range $c := .Connectors }}
-  {{ if ne $c.Name "Email" }}
-  <a href="{{ $c.URL }}">
-      <span class="login-button-show">
-          <i class="iconfont icon{{ $c.Type }}"></i>
-          <span>{{ $c.Name }}</span>
-      </span>
-  </a>
-  {{ end }}
-  {{ end }}
-</section>
+    <span class="login-button-show methods-desc">
+        <span>第三方登录：</span>
+    </span>
+    {{ range $c := .Connectors }}
+        {{ if and (ne $c.Name "Email") (eq $c.Type "github") }}
+        <a href="{{ $c.URL }}">
+            <span class="login-button-show">
+                <i class="iconfont icon{{ $c.Type }}"></i>
+            </span>
+        </a>
+        {{ end }}
+        {{ if and (ne $c.Name "Email") (eq $c.Type "oauth") }}
+        <a href="{{ $c.URL }}">
+            <span class="login-button-show">
+                <i class="iconfont icon{{ $c.Type }}"></i>
+            </span>
+        </a>
+        {{ end }}
+        {{ if and (ne $c.Name "Email") (eq $c.Type "ldap") }}
+        <a href="{{ $c.URL }}">
+            <span class="login-button-show">
+                <i class="iconfont icon{{ $c.Type }}"></i>
+            </span>
+        </a>
+        {{ end }}
+        {{ else }}
+        <a href="{{ $c.URL }}">
+            <span class="login-button-show">
+                <i class="iconfont iconotherauth"></i>
+            </span>
+        </a>
+    {{ end }}
+    <span class="divide">|</span>
+    <a href="/signin?findPassword=true">
+        <span class="login-button-show function-btn">
+            <span>找回密码</span>
+        </span>
+    </a>
+    <template v-if="showRegistration">
+        <span class="divide">|</span>
+        <a href="/signin?signUp=true">
+            <span class="login-button-show function-btn">
+                <span>注册</span>
+            </span>
+        </a>
+    </template>
+  </section>
 <!-- 尾结束 -->
 
 {{ template "footer.html" . }}

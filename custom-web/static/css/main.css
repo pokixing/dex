@@ -91,7 +91,7 @@ a {
 
 .login .login-inner-form {
   width: 100%;
-  max-width: 350px;
+  max-width: 380px;
   color: #717171;
   text-align: center;
 }
@@ -374,16 +374,22 @@ input[type="radio"] {
   margin-top: 35px;
 }
 
+.details .auth-types{
+  text-align: right;
+  margin-top: 15px;
+}
+
+.details .auth-types .methods-desc{
+  font-weight: 400;
+  font-size: 14px;
+}
+
 .details .auth-types a {
   display: inline-block;
   margin: 0px 5px;
-  height: 35px;
   color: #007bff;
-  border: 1px solid #007bff;
-  padding: 0 10px;
-  border-radius: 4px;
   font-weight: 400;
-  font-size: 13px;
+  font-size: 14px;
   transition: all 0.3s;
   user-select: none;
 }
@@ -394,6 +400,24 @@ input[type="radio"] {
   color: #007bff;
 }
 
+.details .auth-types a .iconfont {
+  font-size: 25px;
+  vertical-align: bottom;
+}
+
+.details .auth-types .function-btn{
+  color: #717171;
+}
+
+.details .auth-types .function-btn:hover{
+  color: #007bff;
+}
+
+
+.details .auth-types .divide {
+  color: #ced4da;
+}
+
 .details .auth-types p {
   margin: 10px auto 25px;
   color: #524f4f;
@@ -402,7 +426,7 @@ input[type="radio"] {
 }
 
 .details .auth-types .login-button-show {
-  display: block;
+  display: inline-block;
   line-height: 35px;
 }
 

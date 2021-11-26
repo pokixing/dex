@@ -43,12 +43,6 @@ var dex = new Vue({
             }
 
         },
-        findPassword() {
-            window.location.href = `${protocol}//${hostname}/signin?findPassword=true`;
-        },
-        signUp() {
-            window.location.href = `${protocol}//${hostname}/signin?signUp=true`;
-        },
         async registrationCheck(){
             const registrationRes = await axios.get(`/api/v1/features/RegisterTrigger`);
             if (registrationRes.data && registrationRes.data.enabled) {
