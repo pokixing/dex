@@ -66,33 +66,19 @@
         <span>第三方登录：</span>
     </span>
     {{ range $c := .Connectors }}
-        {{ if and (ne $c.Name "Email") (eq $c.Type "github") }}
-        <a href="{{ $c.URL }}">
-            <span class="login-button-show">
-                <i class="iconfont icon{{ $c.Type }}"></i>
-            </span>
-        </a>
-        {{ end }}
-        {{ if and (ne $c.Name "Email") (eq $c.Type "oauth") }}
-        <a href="{{ $c.URL }}">
-            <span class="login-button-show">
-                <i class="iconfont icon{{ $c.Type }}"></i>
-            </span>
-        </a>
-        {{ end }}
-        {{ if and (ne $c.Name "Email") (eq $c.Type "ldap") }}
-        <a href="{{ $c.URL }}">
-            <span class="login-button-show">
-                <i class="iconfont icon{{ $c.Type }}"></i>
-            </span>
-        </a>
-        {{ end }}
-        {{ else }}
+        {{ if and (ne $c.Name "Email") (ne $c.Type "oauth") (ne $c.Type "ldap") (ne $c.Type "github") }}
         <a href="{{ $c.URL }}">
             <span class="login-button-show">
                 <i class="iconfont iconotherauth"></i>
             </span>
         </a>
+        {{ else if (ne $c.Name "Email")}}
+        <a href="{{ $c.URL }}">
+            <span class="login-button-show">
+                <i class="iconfont icon{{ $c.Type }}"></i>
+            </span>
+        </a>
+        {{ end }}
     {{ end }}
     <span class="divide">|</span>
     <a href="/signin?findPassword=true">
