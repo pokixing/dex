@@ -2,6 +2,7 @@ FROM golang:1.16.6-alpine3.13 AS builder
 
 WORKDIR /usr/local/src/dex
 
+RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.tuna.tsinghua.edu.cn/g' /etc/apk/repositories
 RUN apk add --no-cache --update alpine-sdk
 
 ARG TARGETOS
@@ -9,8 +10,7 @@ ARG TARGETARCH
 ARG TARGETVARIANT=""
 
 ENV GOOS=${TARGETOS} GOARCH=${TARGETARCH} GOARM=${TARGETVARIANT}
-
-ARG GOPROXY
+ENV GOPROXY=https://goproxy.cn,direct
 
 COPY go.mod go.sum ./
 COPY api/v2/go.mod api/v2/go.sum ./api/v2/
