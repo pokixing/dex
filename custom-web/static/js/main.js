@@ -1,5 +1,6 @@
 const hostname = window.location.hostname;
 const protocol = window.location.protocol;
+const port = window.location.port;
 
 // login();
 var dex = new Vue({
@@ -34,7 +35,12 @@ var dex = new Vue({
                     if (roleBinding) {
                         const role = roleBinding.map((item) => item.role);
                         store.set("role", role);
-                        window.location.href = `${protocol}//${hostname}/v1/projects`;
+                        if(port){
+                            window.location.href = `${protocol}//${hostname}:${port}/v1/projects`;
+                        }
+                        else{
+                            window.location.href = `${protocol}//${hostname}/v1/projects`;
+                        }
                     }
                 }
             } 
