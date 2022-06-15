@@ -18,6 +18,7 @@ import (
 
 	"github.com/dexidp/dex/connector"
 	"github.com/dexidp/dex/pkg/log"
+	"github.com/jmespath/go-jmespath"
 )
 
 type oauthConnector struct {
@@ -201,29 +202,34 @@ func (c *oauthConnector) HandleCallback(s connector.Scopes, r *http.Request) (id
 		return identity, fmt.Errorf("OAuth Connector: failed to execute request to userinfo: status %d", userInfoResp.StatusCode)
 	}
 
-	var userInfoResult map[string]interface{}
+	var userInfoResult interface{}
 	err = json.NewDecoder(userInfoResp.Body).Decode(&userInfoResult)
 	if err != nil {
 		c.logger.Errorf("OAuth Connector: failed to parse userinfo: %v", err)
 		return identity, fmt.Errorf("OAuth Connector: failed to parse userinfo: %v", err)
 	}
 
-	userID, found := userInfoResult[c.userIDKey].(string)
+	tmpUserID, _ := jmespath.Search(c.userIDKey, userInfoResult)
+	userID, found := tmpUserID.(string)
 	if !found {
 		c.logger.Errorf("OAuth Connector: not found %v claim", c.userIDKey)
 		return identity, fmt.Errorf("OAuth Connector: not found %v claim", c.userIDKey)
 	}
 
 	identity.UserID = userID
-	identity.Username, _ = userInfoResult[c.userNameKey].(string)
-	identity.PreferredUsername, _ = userInfoResult[c.preferredUsernameKey].(string)
-	identity.Email, _ = userInfoResult[c.emailKey].(string)
-	identity.EmailVerified, _ = userInfoResult[c.emailVerifiedKey].(bool)
+	username, _ := jmespath.Search(c.userNameKey, userInfoResult)
+	identity.Username, _ = username.(string)
+	preferredUsername, _ := jmespath.Search(c.preferredUsernameKey, userInfoResult)
+	identity.PreferredUsername, _ = preferredUsername.(string)
+	email, _ := jmespath.Search(c.emailKey, userInfoResult)
+	identity.Email, _ = email.(string)
+	emailVerified, _ := jmespath.Search(c.emailVerifiedKey, userInfoResult)
+	identity.EmailVerified, _ = emailVerified.(bool)
 
 	if s.Groups {
 		groups := map[string]struct{}{}
 
-		c.addGroupsFromMap(groups, userInfoResult)
+		c.addGroups(groups, userInfoResult)
 		c.addGroupsFromToken(groups, token.AccessToken)
 
 		for groupName := range groups {
@@ -243,8 +249,9 @@ func (c *oauthConnector) HandleCallback(s connector.Scopes, r *http.Request) (id
 	return identity, nil
 }
 
-func (c *oauthConnector) addGroupsFromMap(groups map[string]struct{}, result map[string]interface{}) error {
-	groupsClaim, ok := result[c.groupsKey].([]interface{})
+func (c *oauthConnector) addGroups(groups map[string]struct{}, result interface{}) error {
+	tmpGroupsClaim, _ := jmespath.Search(c.groupsKey, result)
+	groupsClaim, ok := tmpGroupsClaim.([]interface{})
 	if !ok {
 		return errors.New("cannot convert to slice")
 	}
@@ -252,6 +259,12 @@ func (c *oauthConnector) addGroupsFromMap(groups map[string]struct{}, result map
 	for _, group := range groupsClaim {
 		if groupString, ok := group.(string); ok {
 			groups[groupString] = struct{}{}
+			continue
+		}
+		if groupMap, ok := group.(map[string]interface{}); ok {
+			if groupName, ok := groupMap["name"].(string); ok {
+				groups[groupName] = struct{}{}
+			}
 		}
 	}
 
@@ -269,13 +282,13 @@ func (c *oauthConnector) addGroupsFromToken(groups map[string]struct{}, token st
 		return err
 	}
 
-	var claimsMap map[string]interface{}
+	var claimsMap interface{}
 	err = json.Unmarshal(decoded, &claimsMap)
 	if err != nil {
 		return err
 	}
 
-	return c.addGroupsFromMap(groups, claimsMap)
+	return c.addGroups(groups, claimsMap)
 }
 
 func decode(seg string) ([]byte, error) {
