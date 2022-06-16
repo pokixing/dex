@@ -215,15 +215,34 @@ func (c *oauthConnector) HandleCallback(s connector.Scopes, r *http.Request) (id
 		c.logger.Errorf("OAuth Connector: not found %v claim", c.userIDKey)
 		return identity, fmt.Errorf("OAuth Connector: not found %v claim", c.userIDKey)
 	}
-
 	identity.UserID = userID
-	username, _ := jmespath.Search(c.userNameKey, userInfoResult)
+
+	username, err := jmespath.Search(c.userNameKey, userInfoResult)
+	if err != nil {
+		c.logger.Errorf("OAuth Connector: failed to search %v claim: %v", c.userNameKey, err)
+		return identity, fmt.Errorf("OAuth Connector: failed to search %v claim: %v", c.userNameKey, err)
+	}
 	identity.Username, _ = username.(string)
-	preferredUsername, _ := jmespath.Search(c.preferredUsernameKey, userInfoResult)
+
+	preferredUsername, err := jmespath.Search(c.preferredUsernameKey, userInfoResult)
+	if err != nil {
+		c.logger.Errorf("OAuth Connector: failed to search %v claim: %v", c.preferredUsernameKey, err)
+		return identity, fmt.Errorf("OAuth Connector: failed to search %v claim: %v", c.preferredUsernameKey, err)
+	}
 	identity.PreferredUsername, _ = preferredUsername.(string)
-	email, _ := jmespath.Search(c.emailKey, userInfoResult)
+
+	email, err := jmespath.Search(c.emailKey, userInfoResult)
+	if err != nil {
+		c.logger.Errorf("OAuth Connector: failed to search %v claim: %v", c.emailKey, err)
+		return identity, fmt.Errorf("OAuth Connector: failed to search %v claim: %v", c.emailKey, err)
+	}
 	identity.Email, _ = email.(string)
-	emailVerified, _ := jmespath.Search(c.emailVerifiedKey, userInfoResult)
+
+	emailVerified, err := jmespath.Search(c.emailVerifiedKey, userInfoResult)
+	if err != nil {
+		c.logger.Errorf("OAuth Connector: failed to search %v claim: %v", c.emailVerifiedKey, err)
+		return identity, fmt.Errorf("OAuth Connector: failed to search %v claim: %v", c.emailVerifiedKey, err)
+	}
 	identity.EmailVerified, _ = emailVerified.(bool)
 
 	if s.Groups {
@@ -250,7 +269,11 @@ func (c *oauthConnector) HandleCallback(s connector.Scopes, r *http.Request) (id
 }
 
 func (c *oauthConnector) addGroups(groups map[string]struct{}, result interface{}) error {
-	tmpGroupsClaim, _ := jmespath.Search(c.groupsKey, result)
+	tmpGroupsClaim, err := jmespath.Search(c.groupsKey, result)
+	if err != nil {
+		return errors.New(fmt.Sprintf("failed to search %v claim: %v", c.groupsKey, err))
+	}
+
 	groupsClaim, ok := tmpGroupsClaim.([]interface{})
 	if !ok {
 		return errors.New("cannot convert to slice")
